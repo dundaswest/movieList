@@ -2,19 +2,21 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies :  window.exampleMovieData,
+      movies :  window.exampleMovieData ,
       //currentVideo : window.exampleMovieData[0],
       keyword:'Mean girls'
     };
   }
   handleSearchClick(userInput) {
     var newList = this.handleSearch(userInput);
+    newList = newList.length > 0 ? newList:[{title: 'No Match'}];
+    console.log(newList);
     this.setState({movies : newList});
     console.log(this.state);
   } 
 
   handleSearch(input) {
-    var filtered = this.state.movies.filter((movie) => movie.title === input);
+    var filtered = this.state.movies.filter((movie) => movie.title.includes(input));
     return filtered;
   }
  
