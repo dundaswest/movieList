@@ -2,10 +2,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies :  window.exampleMovieData ,
+      movies :  [],
       //currentVideo : window.exampleMovieData[0],
       keyword:'Mean girls'
     };
+  }
+  handleAddMovie(addingMovie){
+    this.setState({movies:this.state.movies.concat([{title:addingMovie}])});
   }
   handleSearchClick(userInput) {
     var newList = this.handleSearch(userInput);
@@ -23,6 +26,11 @@ class App extends React.Component {
   render() {
     return (   
       <div>
+        <nav className="addMovie">
+          <div className="col-md-6 offset-md-3">
+            <div><AddMovie movieList={this.state.movies} handleAddMovie={this.handleAddMovie.bind(this)}/></div>
+          </div>
+        </nav>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
             <div><Search keyword ={this.state.keyword} handleSearchClick={this.handleSearchClick.bind(this)}/></div>
