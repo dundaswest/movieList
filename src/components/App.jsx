@@ -31,7 +31,9 @@ class App extends React.Component {
     const movie = this.state.movies.find(movie => movie.title === updatedMovie.title);
     movie.watched = !movie.watched;
   }
- 
+  toggleWatched(targetMovie) {
+    targetMovie.watched = !targetMovie.watched;
+  }
   render() {
     return (   
       <div>
@@ -55,6 +57,7 @@ class App extends React.Component {
           <div className="col-md-5">
             <MovieList movies={this.state.movies}
               handleUpdateMovie={this.handleUpdateMovie.bind(this)}
+              toggleWatched={this.toggleWatched.bind(this)}
               keyword={this.state.keyword}
               filterType={this.state.filterType}/>
           </div>

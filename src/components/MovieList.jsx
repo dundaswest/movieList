@@ -1,11 +1,3 @@
-/*var MovieList = (props) => (
-  <div className ="movie-list">
-    {props.movies.map(movie => 
-      <MovieListEntry movie={movie} handleWatchClick = {props.handleWatchClick} />
-    )}
-  </div>
-);
-*/
 
 class MovieList extends React.Component {
   constructor(props) {
@@ -41,7 +33,8 @@ class MovieList extends React.Component {
     return (
       <div className ="movie-list">
         {filteredMovies.map(movie => 
-          <MovieListEntry movie={movie} handleUpdateMovie={this.props.handleUpdateMovie}/>
+          <MovieListEntry movie={movie} handleUpdateMovie={this.props.handleUpdateMovie}
+            toggleWatched={this.props.toggleWatched}/>
         )}
       </div> 
     );
