@@ -34,7 +34,7 @@ class MovieList extends React.Component {
       <div className ="movie-list">
         {filteredMovies.map(movie => 
           <MovieListEntry movie={movie} handleUpdateMovie={this.props.handleUpdateMovie}
-            toggleWatched={this.props.toggleWatched}/>
+          />
         )}
       </div> 
     );

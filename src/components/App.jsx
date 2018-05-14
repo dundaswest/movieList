@@ -3,7 +3,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      movies: [],
+      movies: window.exampleMovieData,
       //currentVideo : window.exampleMovieData[0]
       isWatchedView: false,
       isSearchedView: false,
@@ -12,7 +12,9 @@ class App extends React.Component {
     };
   }
   handleAddMovie(addingMovie){
-    this.setState({movies: this.state.movies.concat([{title:addingMovie, watched:false}])});
+    let info = this.getMovieInfo(addingMovie);
+    console.log(info);
+    this.setState({movies: this.state.movies.concat([{title:addingMovie, watched:false,runtime:'107 min',metascore:46,imdbRating:6.2}])});
   }
   handleSearchClick(userInput) {
     this.setState({filterType: 'didSearch'});
@@ -31,8 +33,8 @@ class App extends React.Component {
     const movie = this.state.movies.find(movie => movie.title === updatedMovie.title);
     movie.watched = !movie.watched;
   }
-  toggleWatched(targetMovie) {
-    targetMovie.watched = !targetMovie.watched;
+  getMovieInfo(keyword) {
+    return this.props.Search(keyword);
   }
   render() {
     return (   
@@ -57,7 +59,6 @@ class App extends React.Component {
           <div className="col-md-5">
             <MovieList movies={this.state.movies}
               handleUpdateMovie={this.handleUpdateMovie.bind(this)}
-              toggleWatched={this.toggleWatched.bind(this)}
               keyword={this.state.keyword}
               filterType={this.state.filterType}/>
           </div>
