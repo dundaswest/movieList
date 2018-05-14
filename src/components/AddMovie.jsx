@@ -9,7 +9,6 @@ class AddMovie extends React.Component {
 
   handleInPutChange(e) {
     this.setState({userInput:e.target.value});
-    console.log('userinput ' + this.state.userInput);
   }
 
   render() {

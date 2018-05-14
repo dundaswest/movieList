@@ -8,8 +8,7 @@ class Search extends React.Component {
   }
 
   handleInPutChange(e) {
-    this.setState({userInput:e.target.value});
-    console.log('userinput ' + this.state.userInput);
+    this.setState({userInput: e.target.value});
   }
 
   render() {
@@ -18,9 +17,8 @@ class Search extends React.Component {
         <input className="form-control" type="text" placeholder="search ..." onfocus="this.value=''"
           keyword={this.state.keyword}
           onChange={this.handleInPutChange.bind(this)}
-
         />
-        <button className="btn -sm-down" onClick={() => this.props.handleSearchClick(this.state.userInput) }>
+        <button className="btn -sm-down" onClick={() => this.props.handleSearchClick(this.state.userInput)}>
           <span className="glyphicon glyphicon-search"></span>
         </button>
       </div> 

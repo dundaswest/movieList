@@ -11,15 +11,33 @@ class MovieList extends React.Component {
   constructor(props) {
     super(props);
   }
-  render() {
+
+  filterMovies(filterType) {
     let filteredMovies;
-    
-    if (this.props.isWatchedView) {
-      filteredMovies = this.props.movies.filter(movie => movie.watched);
-    } else {
+    switch (this.props.filterType) {
+    case 'all': {
+      filteredMovies = this.props.movies;
+      break;
+    }
+    case 'willWatch': {
       filteredMovies = this.props.movies.filter(movie => !movie.watched);
+      break;
+    }
+    case 'didWatch': {
+      filteredMovies = this.props.movies.filter(movie => movie.watched);
+      break;
+    }
+    case 'didSearch': {
+      filteredMovies = this.props.movies.filter(movie => movie.title.includes(this.props.keyword)); 
+      break;
+    }
     }
 
+    return filteredMovies;
+  }
+  render() {
+    const filteredMovies = this.filterMovies(this.props.filterType);
+    
     return (
       <div className ="movie-list">
         {filteredMovies.map(movie => 
