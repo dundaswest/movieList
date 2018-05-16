@@ -6,10 +6,10 @@ class MovieInfo extends React.Component {
 
     return (
       <div class='movie info'>
-        <div>Release date :{this.props.movie.targetMovie.release_date}</div>
-        <div>VoteAverage:{this.props.movie.targetMovie.vote_average}</div>
-        <div>Popularity:{this.props.movie.targetMovie.popularity}</div>
-        <div>Adult: {this.props.movie.targetMovie.Adult}</div>
+        <div>Release date :{this.props.movie.release_date}</div>
+        <div>VoteAverage:{this.props.movie.vote_average}</div>
+        <div>Popularity:{this.props.movie.popularity}</div>
+        <div>Adult: {this.props.movie.Adult}</div>
       </div>
     );
   }

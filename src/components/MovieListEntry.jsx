@@ -2,21 +2,22 @@ class MovieListEntry extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      display:false 
+      display:false ,
+      watched:false
     };
   }
   render() {
     return (
       <div className = "each-Moive">
-        <div className = "movie-list-entry" onClick={this.props.handleDisplayClick}>{this.props.movie.targetMovie.title}
+        <div className = "movie-list-entry" onClick={this.props.handleDisplayClick}>{this.props.movie.title}
           <div>
             
-            <div> {this.props.display ? <MovieInfo movie={this.props.movie}
-              display={this.props.display}/> : null }</div>
-            <button className = "watched" onClick={() => this.props.handleUpdateMovie(this.props.movie)}
-            >watched</button>
+            <div> {this.props.display ? <MovieInfo movie={this.props.movie}/> : null }</div>
+            
           </div>
-        </div>   
+        </div>  
+        <button className = "watched" onClick={() => this.props.handleUpdateMovie(this.props.movie)}
+        >watched</button> 
       </div> 
     );
   }

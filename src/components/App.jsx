@@ -4,7 +4,6 @@ class App extends React.Component {
 
     this.state = {
       movies: [],
-      addingMovie : '???',
       isWatchedView: false,
       isSearchedView: false,
       filterType: 'all',
@@ -26,8 +25,9 @@ class App extends React.Component {
   } 
   //??
   handleAddingMovie(targetMovie) {
-    this.setState({addingMovie:targetMovie});
-    this.setState({movies: this.state.movies.concat([{targetMovie}])});
+    const movieObject = targetMovie;
+    movieObject.watched = false;
+    this.setState({ movies: this.state.movies.concat([movieObject]) });
     //console.log('Adding movie !!!!!'+targetMovie);
   }
   //??
@@ -40,14 +40,13 @@ class App extends React.Component {
     movie.watched = !movie.watched;
   }
   getMovieInfo(keyword) {
-    this.props.Search(keyword,this.handleAddingMovie.bind(this));
-    console.log(JSON.stringify(this.state.addingMovie));
+    this.props.Search(keyword, this.handleAddingMovie.bind(this));
     //return this.props.Search(keyword).results; 
 
   }
   handleDisplayClick(){
 
-    this.setState({display:!this.state.display});
+    this.setState({display:!this.display});
   }
 
   render() {
