@@ -17,14 +17,14 @@ var searchMovies = (query, callback) => {
   };
 
   $.get('https://api.themoviedb.org/3/search/movie', {
-    api_key: window.imdbApikey ,
+    //api_key
+    apikey: window.imdbApikey ,
     query: query
   }).done(function (response) {
     console.log(settings, response);
-    console.log(response.results)
-    console.log('ADDING MOVIE '+ JSON.stringify(response.results[0]))
-    callback(response.results[0])
-    //return response.results[0]
+ 
+    console.log('ADDING MOVIE '+ JSON.stringify(response.results[0]));
+    callback(response.results[0]);
 
   }).fail(function(errorObject) {
     console.error(errorObject.responseJSON.status_message);
