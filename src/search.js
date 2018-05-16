@@ -11,15 +11,21 @@ var searchMovies = (query, callback) => {
     crossDomain: true,
     url: generateRequestURL('the big short'),
     method: 'GET',
+    page:1,
     headers: {},                            
     data: {}
   };
 
   $.get('https://api.themoviedb.org/3/search/movie', {
-    apikey: window.imdbApikey ,
+    api_key: window.imdbApikey ,
     query: query
   }).done(function (response) {
     console.log(settings, response);
+    console.log(response.results)
+    console.log('ADDING MOVIE '+ JSON.stringify(response.results[0]))
+    callback(response.results[0])
+    //return response.results[0]
+
   }).fail(function(errorObject) {
     console.error(errorObject.responseJSON.status_message);
   }).always(function() {
@@ -44,6 +50,7 @@ var searchMovies = (query, callback) => {
 //     responseJSON.error.errors.forEach((err) =>
 //       console.error(err)
 //     );
+
 //   });
 };
 window.searchMovies = searchMovies;

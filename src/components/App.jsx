@@ -3,18 +3,18 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      movies: window.exampleMovieData,
-      //currentVideo : window.exampleMovieData[0]
+      movies: [],
+      addingMovie : '???',
       isWatchedView: false,
       isSearchedView: false,
       filterType: 'all',
-      keyword:''
+      keyword:'',
+      display: false
     };
   }
   handleAddMovie(addingMovie){
-    let info = this.getMovieInfo(addingMovie);
-    console.log(info);
-    this.setState({movies: this.state.movies.concat([{title:addingMovie, watched:false,runtime:'107 min',metascore:46,imdbRating:6.2}])});
+    this.getMovieInfo(addingMovie);
+    //this.setState({movies: this.state.movies.concat([{title:addingMovie}])});
   }
   handleSearchClick(userInput) {
     this.setState({filterType: 'didSearch'});
@@ -24,7 +24,13 @@ class App extends React.Component {
   handleWatchedClick() {
     this.setState({filterType: 'didWatch'});
   } 
-
+  //??
+  handleAddingMovie(targetMovie) {
+    this.setState({addingMovie:targetMovie});
+    this.setState({movies: this.state.movies.concat([{targetMovie}])});
+    //console.log('Adding movie !!!!!'+targetMovie);
+  }
+  //??
   handleToWatchClick() {
     this.setState({filterType: 'willWatch'});
   } 
@@ -34,8 +40,16 @@ class App extends React.Component {
     movie.watched = !movie.watched;
   }
   getMovieInfo(keyword) {
-    return this.props.Search(keyword);
+    this.props.Search(keyword,this.handleAddingMovie.bind(this));
+    console.log(JSON.stringify(this.state.addingMovie));
+    //return this.props.Search(keyword).results; 
+
   }
+  handleDisplayClick(){
+
+    this.setState({display:!this.state.display});
+  }
+
   render() {
     return (   
       <div>
@@ -58,9 +72,12 @@ class App extends React.Component {
 
           <div className="col-md-5">
             <MovieList movies={this.state.movies}
+              display={this.state.display}
               handleUpdateMovie={this.handleUpdateMovie.bind(this)}
               keyword={this.state.keyword}
-              filterType={this.state.filterType}/>
+              filterType={this.state.filterType}
+              addingMovie={this.state.addingMovie}
+              handleDisplayClick={this.handleDisplayClick.bind(this)}/>
           </div>
         </div>
       </div>

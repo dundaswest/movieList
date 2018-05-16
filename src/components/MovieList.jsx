@@ -33,7 +33,11 @@ class MovieList extends React.Component {
     return (
       <div className ="movie-list">
         {filteredMovies.map(movie => 
-          <MovieListEntry movie={movie} handleUpdateMovie={this.props.handleUpdateMovie}
+          <MovieListEntry movie={movie} 
+            display={this.props.display}
+            addingMovie={this.props.addingMovie}
+            handleUpdateMovie={this.props.handleUpdateMovie}
+            handleDisplayClick={this.props.handleDisplayClick}
           />
         )}
       </div> 
