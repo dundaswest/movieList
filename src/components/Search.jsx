@@ -14,7 +14,7 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search-bar form-inline">
-        <input className="form-control" type="text" placeholder="search ..." onfocus="this.value=''"
+        <input className="form-control" type="text" placeholder="search ..." onfocus="this.value= ''"
           onChange={this.handleInPutChange.bind(this)}
         />
         <button className="btn -sm-down" onClick={() => this.props.handleSearchClick(this.state.userInput)}>

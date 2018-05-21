@@ -11,6 +11,7 @@ class App extends React.Component {
       display: false
     };
   }
+  //todo https://gist.github.com/beth/ed2a6033b055d6419789fe32a015d590
   handleAddMovie(addingMovie){
     this.getMovieInfo(addingMovie);
     //this.setState({movies: this.state.movies.concat([{title:addingMovie}])});
